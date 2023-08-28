@@ -6,6 +6,8 @@ setopt prompt_subst
 
 local PR_USER PR_USER_OP PR_PROMPT PR_HOST
 
+DALLAS_CURRENT_TIME_="%{$fg[white]%}{%{$fg[yellow]%}%D %T%{$fg[white]%}}%{$reset_color%}"
+
 # Check the UID
 if [[ $UID -ne 0 ]]; then # normal user
   PR_USER='%F{yellow}%n%f'
@@ -31,7 +33,7 @@ local user_host="${PR_USER}%F{cyan}@${PR_HOST}"
 local current_dir="%B%F{magenta}%~%f%b"
 local git_branch='$(git_prompt_info)'
 
-PROMPT="╭─${user_host} ${current_dir} \$(ruby_prompt_info) ${git_branch}
+PROMPT="╭─$DALLAS_CURRENT_TIME_\${user_host} ${current_dir} \$(ruby_prompt_info) ${git_branch}
 ╰─$PR_PROMPT "
 RPROMPT="${return_code}"
 
